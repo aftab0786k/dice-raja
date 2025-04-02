@@ -1,0 +1,44 @@
+.game-container {
+    padding: 1rem;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .timer-container {
+    z-index: 10;
+    
+
+    
+  }
+  
+  .players-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 5rem;
+  }
+  
+  .player-card {
+    transition: all 0.3s ease;
+  }
+  
+  .player-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .pot {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .redPot { background-color: #ef4444; }
+  .bluePot { background-color: #3b82f6; }
+  .greenPot { background-color: #22c55e; }
+  .yellowPot { background-color: #eab308; }
+  .purplePot { background-color: #a855f7; }
+  .orangePot { background-color: #f97316; }
+  .blackPot { background-color: #1f2937; }
+  
+  .game-board {
+    max-width: 800px;
+    margin: 2rem auto;
+    aspect-ratio: 1;
+  }

@@ -1,0 +1,64 @@
+body {
+    background: linear-gradient(to bottom right, #0f3460, #1a1a2e);
+  }
+
+
+
+  /* Bubble Animation */
+@keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-20px) translateX(20px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.6;
+    }
+  }
+  
+  .bubble {
+    position: absolute;
+    /* background: rgba(255, 223, 0, 0.3); */
+    background: rgba(203, 104, 240, 0.3);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+  }
+  
+  .bubble-1 {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 6s;
+  }
+  
+  .bubble-2 {
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    left: 70%;
+    animation-duration: 8s;
+  }
+  
+  .bubble-3 {
+    width: 100px;
+    height: 100px;
+    top: 70%;
+    left: 20%;
+    animation-duration: 10s;
+  }
+  
+  /* Card Corner Styles */
+  .rounded-2xl {
+    border-radius: 20px;
+  }
+  
+  /* Hover Effect */
+  .transform:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }

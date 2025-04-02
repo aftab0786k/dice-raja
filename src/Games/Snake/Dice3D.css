@@ -1,0 +1,429 @@
+/* Filename: Dice3D.css */
+
+/* Provides the 3D structure, face positioning, and dot layout */
+
+ 
+
+.scene {
+
+    /* Establish 3D context */
+    
+    perspective: 1000px; /* Adjust perspective depth as needed */
+    
+    width: 100%; /* Take size from parent (.dice-wrapper) */
+    
+    height: 100%;
+    
+    display: flex;
+    
+    justify-content: center;
+    
+    align-items: center;
+    
+    }
+    
+     
+    
+    .dice {
+    
+    width: 100%; /* Use full wrapper size */
+    
+    height: 100%;
+    
+    position: relative;
+    
+    transform-style: preserve-3d;
+    
+    /* Transitions are handled inline in Dice3D.jsx for dynamic control */
+    
+    }
+    
+     
+    
+    .diceFace {
+    
+    position: absolute;
+    
+    /* Size should match the scene/dice size */
+    
+    width: 100%;
+    
+    height: 100%;
+    
+    background: #ffffff; /* White face */
+    
+    border: 1px solid #ccc; /* Subtle border */
+    
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1); /* Inner shadow */
+    
+    border-radius: 10%; /* Slightly rounded corners for die faces */
+    
+    display: flex;
+    
+    justify-content: center;
+    
+    align-items: center;
+    
+    backface-visibility: hidden; /* Hide back of faces */
+    
+    /* Text color for dots */
+    
+    color: #ffffff;
+    
+    }
+    
+     
+    
+    /* --- Face Positioning --- */
+    
+    /* The translateZ value is crucial and should be half the dice dimension */
+    
+    /* We use CSS variables to make this easily adjustable based on media queries */
+    
+    :root {
+    
+    --dice-half-size: 1.5rem; /* Default half-size */
+    
+    }
+    
+     
+    
+    .front {
+    
+    transform: rotateY(0deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+    .back {
+    
+    transform: rotateY(180deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+    .right {
+    
+    transform: rotateY(90deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+    .left {
+    
+    transform: rotateY(-90deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+    .top {
+    
+    transform: rotateX(90deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+    .bottom {
+    
+    transform: rotateX(-90deg) translateZ(var(--dice-half-size));
+    
+    }
+    
+     
+    
+    /* --- Dot Container and Individual Dots --- */
+    
+    .dotContainer {
+    
+    display: grid;
+    
+    /* Create a 3x3 grid within the face */
+    
+    grid-template-columns: repeat(3, 1fr);
+    
+    grid-template-rows: repeat(3, 1fr);
+    
+    /* Use a percentage of the face size */
+    
+    width: 70%;
+    
+    height: 70%;
+    
+    /* Center the grid */
+    
+    align-items: center;
+    
+    justify-items: center;
+    
+    /* Gap between grid cells */
+    
+    gap: 10%;
+    
+    }
+    
+     
+    
+    .dot {
+    
+    /* Size relative to the container (which is relative to the face) */
+    
+    width: 100%; /* Fill the grid cell */
+    
+    height: 100%;
+    
+    background-color: currentColor; /* Use face text color */
+    
+    border-radius: 50%;
+    
+    /* Ensure dots are only visible in their assigned grid cells */
+    
+    grid-column: -1; /* Default: Place nowhere */
+    
+    grid-row: -1; /* Default: Place nowhere */
+    
+    }
+    
+     
+    
+    /* --- Dot Positioning using Grid --- */
+    
+    /* Each .dot-N class places its child dots in the correct grid cells */
+    
+     
+    
+    /* Face 1 */
+    
+    .dot-1:nth-child(1) {
+    
+    grid-column: 2;
+    
+    grid-row: 2;
+    
+    } /* Center */
+    
+     
+    
+    /* Face 2 */
+    
+    .dot-2:nth-child(1) {
+    
+    grid-column: 1;
+    
+    grid-row: 1;
+    
+    } /* Top-left */
+    
+    .dot-2:nth-child(2) {
+    
+    grid-column: 3;
+    
+    grid-row: 3;
+    
+    } /* Bottom-right */
+    
+     
+    
+    /* Face 3 */
+    
+    .dot-3:nth-child(1) {
+    
+    grid-column: 1;
+    
+    grid-row: 1;
+    
+    } /* Top-left */
+    
+    .dot-3:nth-child(2) {
+    
+    grid-column: 2;
+    
+    grid-row: 2;
+    
+    } /* Center */
+    
+    .dot-3:nth-child(3) {
+    
+    grid-column: 3;
+    
+    grid-row: 3;
+    
+    } /* Bottom-right */
+    
+     
+    
+    /* Face 4 */
+    
+    .dot-4:nth-child(1) {
+    
+    grid-column: 1;
+    
+    grid-row: 1;
+    
+    } /* Top-left */
+    
+    .dot-4:nth-child(2) {
+    
+    grid-column: 3;
+    
+    grid-row: 1;
+    
+    } /* Top-right */
+    
+    .dot-4:nth-child(3) {
+    
+    grid-column: 1;
+    
+    grid-row: 3;
+    
+    } /* Bottom-left */
+    
+    .dot-4:nth-child(4) {
+    
+    grid-column: 3;
+    
+    grid-row: 3;
+    
+    } /* Bottom-right */
+    
+     
+    
+    /* Face 5 */
+    
+    .dot-5:nth-child(1) {
+    
+    grid-column: 1;
+    
+    grid-row: 1;
+    
+    } /* Top-left */
+    
+    .dot-5:nth-child(2) {
+    
+    grid-column: 3;
+    
+    grid-row: 1;
+    
+    } /* Top-right */
+    
+    .dot-5:nth-child(3) {
+    
+    grid-column: 2;
+    
+    grid-row: 2;
+    
+    } /* Center */
+    
+    .dot-5:nth-child(4) {
+    
+    grid-column: 1;
+    
+    grid-row: 3;
+    
+    } /* Bottom-left */
+    
+    .dot-5:nth-child(5) {
+    
+    grid-column: 3;
+    
+    grid-row: 3;
+    
+    } /* Bottom-right */
+    
+     
+    
+    /* Face 6 */
+    
+    .dot-6:nth-child(1) {
+    
+    grid-column: 1;
+    
+    grid-row: 1;
+    
+    } /* Top-left */
+    
+    .dot-6:nth-child(2) {
+    
+    grid-column: 3;
+    
+    grid-row: 1;
+    
+    } /* Top-right */
+    
+    .dot-6:nth-child(3) {
+    
+    grid-column: 1;
+    
+    grid-row: 2;
+    
+    } /* Middle-left */
+    
+    .dot-6:nth-child(4) {
+    
+    grid-column: 3;
+    
+    grid-row: 2;
+    
+    } /* Middle-right */
+    
+    .dot-6:nth-child(5) {
+    
+    grid-column: 1;
+    
+    grid-row: 3;
+    
+    } /* Bottom-left */
+    
+    .dot-6:nth-child(6) {
+    
+    grid-column: 3;
+    
+    grid-row: 3;
+    
+    } /* Bottom-right */
+    
+     
+    
+    /* --- Media Queries for Dice Size --- */
+    
+    /* Adjust --dice-half-size based on screen size */
+    
+    /* Match these sizes roughly to the .dice-container size in TicTac.css */
+    
+     
+    
+    @media (max-width: 1024px) {
+    
+    :root {
+    
+    --dice-half-size: 1.5rem;
+    
+    } /* ~48px cube if 1rem=16px */
+    
+    }
+    
+     
+    
+    @media (max-width: 768px) {
+    
+    :root {
+    
+    --dice-half-size: 1.4rem;
+    
+    } /* ~45px cube */
+    
+    }
+    
+     
+    
+    @media (max-width: 480px) {
+    
+    :root {
+    
+    --dice-half-size: 1.25rem;
+    
+    } /* ~40px cube */
+    
+    .diceFace {
+    
+    border-radius: 15%;
+    
+    } /* Slightly larger radius on smaller dice */
+    
+    }
+    
+    

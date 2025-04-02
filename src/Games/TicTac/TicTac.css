@@ -1,0 +1,635 @@
+/* Filename: TicTac.css */
+/* Cleaned and slightly reorganized, preserving layout and core styles */
+
+/* --- Base & Globals --- */
+body {
+  background: linear-gradient(135deg, #0f3460, #1a1a2e);
+  color: white; /* Default text color (often overridden) */
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0; /* Reset default margin */
+  font-family: sans-serif; /* Consistent font */
+  font-style: normal; /* Explicitly ensure no italics globally */
+}
+
+/* --- Main Game Container --- */
+.tic-tac-toe-ttd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box; /* Include padding in height */
+  font-style: normal; /* Reinforce no italics for all game elements */
+}
+
+/* --- Header --- */
+.header-ttd {
+  text-align: center;
+  font-weight: 800;
+  padding: 2rem 0 1rem 0; /* Adjusted padding */
+  font-size: 3rem; /* Slightly adjusted */
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  -webkit-background-clip: text;
+  background-clip: text; /* Standard property */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 107, 107, 0.4); /* Adjusted shadow */
+  margin-bottom: 10px; /* Adjusted margin */
+}
+
+/* --- Status & Timers --- */
+.status-container-ttd {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 450px; /* Adjusted max-width */
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px 15px; /* Adjusted padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.timer-ttd {
+  font-size: 1em;
+  color: #1a237e; /* Dark blue */
+}
+
+.timer-ttd span {
+  font-weight: bold;
+}
+
+.text-red-600-ttd {
+  color: #dc2626;
+}
+.text-orange-600-ttd {
+  color: #ea580c;
+}
+
+/* --- Players Info --- */
+.players-ttd {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Adjusted gap */
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 500px; /* Adjusted max-width */
+}
+
+.player-ttd {
+  padding: 0.6rem 1.5rem; /* Adjusted padding */
+  border-radius: 15px;
+  background-color: rgb(245, 245, 245); /* Slightly off-white */
+  color: #333; /* Darker text for contrast */
+  font-weight: 500;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent;
+  text-align: center;
+  flex: 1; /* Allow players to take space */
+  min-width: 150px; /* Minimum width */
+}
+
+/* Shimmer effect */
+.player-ttd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.player-ttd:hover::before {
+  left: 100%;
+}
+
+.player-ttd.active {
+  transform: scale(1.05); /* Slightly reduced scale */
+  box-shadow: 0 0 25px rgba(78, 205, 196, 0.6);
+  border-color: #4ecdc4;
+}
+
+.skips-ttd {
+  font-size: 0.85em;
+  color: #d32f2f; /* Slightly darker red */
+  margin-left: 8px; /* Increased margin */
+  font-weight: normal; /* Normal weight for skips */
+}
+
+.winner-tag-ttd {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: #2e7d32; /* Darker green */
+  font-weight: bold;
+}
+
+/* --- Game Board --- */
+.game-container-ttd {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0; /* Adjusted padding */
+  margin-bottom: 10px; /* Adjusted margin */
+}
+
+.grid-ttd {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Adjusted gap */
+  background: rgba(255, 255, 255, 0.65);
+  padding: 20px; /* Adjusted padding */
+  border-radius: 15px; /* Adjusted radius */
+  backdrop-filter: blur(8px); /* Adjusted blur */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
+}
+
+.cell-ttd {
+  width: 90px; /* Adjusted size */
+  height: 90px; /* Adjusted size */
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(50, 50, 93, 0.15) 0px 10px 20px -10px,
+    /* Adjusted shadow */ rgba(0, 0, 0, 0.2) 0px 8px 16px -8px,
+    rgba(10, 37, 64, 0.2) 0px -1px 4px 0px inset;
+  color: #444; /* Slightly darker number color */
+  border: 2px solid #eee; /* Lighter border */
+  border-radius: 15px; /* Adjusted radius */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem; /* Adjusted font size for X/O */
+  cursor: pointer;
+  transition: all 0.25s ease; /* Faster transition */
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Cell shimmer */
+.cell-ttd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 200, 200, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+.cell-ttd:not(.used):hover::before {
+  left: 100%;
+}
+
+.cell-ttd:not(.used):hover {
+  transform: translateY(-3px); /* Reduced lift */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-color: #ff8a80; /* Lighter red hover border */
+  background-color: #fff;
+}
+
+.cell-ttd.x,
+.cell-ttd.o {
+  font-size: 3.5rem; /* Larger font for X/O */
+  cursor: not-allowed;
+}
+
+.cell-ttd.x {
+  color: #ff5252; /* Consistent red */
+  text-shadow: 0 0 15px rgba(255, 82, 82, 0.5);
+}
+
+.cell-ttd.o {
+  color: #448aff; /* Consistent blue */
+  text-shadow: 0 0 15px rgba(68, 138, 255, 0.5);
+}
+
+.cell-ttd.used {
+  background: #e0e0e0; /* Lighter used background */
+  opacity: 0.8; /* Slightly less opaque */
+  cursor: not-allowed;
+}
+.cell-ttd.used:hover {
+  transform: none; /* No hover lift on used cells */
+  box-shadow: rgba(50, 50, 93, 0.15) 0px 10px 20px -10px,
+    /* Reset shadow */ rgba(0, 0, 0, 0.2) 0px 8px 16px -8px,
+    rgba(10, 37, 64, 0.2) 0px -1px 4px 0px inset;
+}
+
+/* Highlight for the required cell */
+.cell-ttd.highlight {
+  background-color: #fff59d; /* Light yellow */
+  border-color: #ffb74d; /* Orange border */
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 183, 77, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 183, 77, 0);
+  }
+}
+
+/* --- Dice Area --- */
+.dice-interaction-area-ttd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 180px; /* Adjusted height */
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px; /* Added margin top */
+  margin-bottom: 15px; /* Adjusted margin */
+}
+
+/* Container for the Dice and its wrapper */
+.dice-container-ttd {
+  /* Removed background/border - visual is the 3D cube */
+  width: 80px; /* Match Dice3D size */
+  height: 80px; /* Match Dice3D size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Space below dice */
+}
+
+/* Wrapper for enabling/disabling click/opacity */
+.dice-wrapper-ttd {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Added transform transition */
+  cursor: pointer; /* Default cursor */
+  display: flex; /* Ensure child (Dice3D) is centered if needed */
+  justify-content: center;
+  align-items: center;
+}
+.dice-wrapper-ttd:hover:not(.disabled) {
+  transform: scale(1.1); /* Add slight scale on hover */
+}
+
+.dice-wrapper-ttd.disabled {
+  cursor: not-allowed;
+  opacity: 0.5; /* More noticeable disabled state */
+  transform: scale(1); /* Prevent scaling when disabled */
+}
+.dice-wrapper-ttd.disabled:hover {
+  transform: none;
+}
+
+/* Styles for the visual Dice3D component itself are in Dice3D.css */
+
+/* "Roll 6" Choice Buttons Area */
+.roll-six-choice-ttd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px; /* Increased margin */
+  padding: 15px; /* Increased padding */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.roll-six-choice-ttd p {
+  margin: 0 0 10px 0; /* Adjusted margin */
+  font-weight: bold;
+  color: #c2185b; /* Darker pink */
+  text-align: center;
+}
+
+.choice-button-ttd {
+  padding: 10px 15px; /* Increased padding */
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Full width within container */
+  color: white;
+  font-size: 0.9em;
+}
+.choice-button-ttd:hover {
+  transform: translateY(-2px);
+}
+
+.mark-button-ttd {
+  background-color: #388e3c;
+} /* Darker Green */
+.mark-button-ttd:hover {
+  background-color: #2e7d32;
+}
+
+.extra-turn-button-ttd {
+  background-color: #1976d2;
+} /* Darker Blue */
+.extra-turn-button-ttd:hover {
+  background-color: #1565c0;
+}
+
+/* Action Prompt */
+.action-prompt-ttd {
+  margin-top: 5px;
+  font-weight: 500; /* Normal weight */
+  color: #e1f5fe; /* Light blue text color */
+  min-height: 1.5em;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1.1em; /* Slightly larger */
+}
+
+/* --- Popups --- */
+/* Base Info/Status Popup */
+.popup-ttd {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85); /* More opaque */
+  color: white;
+  padding: 12px 20px; /* Adjusted padding */
+  border-radius: 5px;
+  z-index: 1000;
+  font-size: 0.95em; /* Slightly larger */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 90%;
+  animation: fadeInOut 3s ease-in-out forwards; /* Use forwards to keep last state */
+}
+
+.popup-ttd.error {
+  background-color: rgba(211, 47, 47, 0.9); /* Red background for errors */
+  color: white;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+}
+
+/* Name Input Popup */
+.name-popup-ttd {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95); /* Brighter popup */
+  border-radius: 15px; /* Softer corners */
+  padding: 25px 30px; /* More padding */
+  width: 85%;
+  max-width: 400px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  text-align: center;
+  color: #333; /* Dark text */
+  z-index: 1001; /* Above other popups */
+}
+
+.popup-title-ttd {
+  font-size: 1.5rem; /* Adjusted size */
+  font-weight: 600; /* Slightly bolder */
+  margin-bottom: 25px;
+  margin-top: 0;
+  color: #1a237e; /* Dark blue title */
+}
+
+.popup-content-ttd {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.player-section-ttd label {
+  display: block;
+  margin-bottom: 8px; /* Increased space */
+  font-weight: 500; /* Normal weight */
+  color: #555;
+  text-align: left; /* Align labels left */
+}
+
+.name-input-ttd {
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Softer corners */
+  padding: 10px 12px; /* More padding */
+  text-align: left; /* Align text left */
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in width */
+  background-color: #fff;
+}
+.name-input-ttd:focus {
+  outline: none;
+  border-color: #448aff;
+  box-shadow: 0 0 0 2px rgba(68, 138, 255, 0.2);
+}
+
+.popup-buttons-ttd {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Reduced margin */
+}
+
+.popup-button-ttd {
+  /* Base style for buttons in name popup */
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px; /* Adjusted padding */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.popup-button-ttd:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.popup-button-ttd.next {
+  background: #28a745; /* Green */
+}
+.popup-button-ttd.next:hover {
+  background-color: #218838; /* Darker green */
+  opacity: 1;
+}
+
+/* --- Reset Button --- */
+.reset-button-ttd {
+  margin-top: 25px; /* More space above */
+  padding: 12px 30px; /* Wider button */
+  background-color: #ffc107; /* Amber color */
+  color: #333; /* Dark text */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.reset-button-ttd:hover {
+  background-color: #ffb300; /* Darker amber */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Media Queries --- */
+/* Simplify media queries, apply changes downwards */
+@media (max-width: 768px) {
+  .header-ttd {
+    font-size: 2.5rem;
+    padding: 1.5rem 0 0.5rem 0;
+  }
+  .cell-ttd {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+    border-radius: 12px;
+  }
+  .cell-ttd.x,
+  .cell-ttd.o {
+    font-size: 3rem;
+  }
+  .grid-ttd {
+    gap: 8px;
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .player-ttd {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .players-ttd {
+    gap: 1rem;
+  }
+  .name-popup-ttd {
+    padding: 20px 25px;
+  }
+  .popup-title-ttd {
+    font-size: 1.3rem;
+  }
+  .dice-container-ttd {
+    width: 70px;
+    height: 70px;
+  } /* Adjust dice container size */
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* Adjust base font size */
+  }
+  .header-ttd {
+    font-size: 2rem;
+    padding: 1rem 0 0.5rem 0;
+  }
+  .status-container-ttd {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    padding: 8px;
+  }
+  .cell-ttd {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    border-radius: 10px;
+  }
+  .cell-ttd.x,
+  .cell-ttd.o {
+    font-size: 2.5rem;
+  }
+  .grid-ttd {
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .players-ttd {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .player-ttd {
+    width: 80%;
+    max-width: 250px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .skips-ttd,
+  .winner-tag-ttd {
+    margin-left: 5px;
+    font-size: 0.8em;
+  }
+  .dice-interaction-area-ttd {
+    min-height: 160px;
+  }
+  .dice-container-ttd {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+  }
+  .roll-six-choice-ttd {
+    padding: 10px;
+  }
+  .choice-button-ttd {
+    padding: 8px 10px;
+  }
+  .action-prompt-ttd {
+    font-size: 1em;
+  }
+  .popup-ttd {
+    font-size: 0.9em;
+    padding: 10px 15px;
+  }
+  .name-popup-ttd {
+    width: 90%;
+    padding: 20px;
+  }
+  .popup-title-ttd {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .popup-button-ttd {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .reset-button-ttd {
+    padding: 10px 25px;
+    font-size: 1em;
+  }
+}

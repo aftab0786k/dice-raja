@@ -1,0 +1,90 @@
+
+body {
+    background: linear-gradient(to bottom right, #0f3460, #1a1a2e);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 479px) and (min-width: 200px) {
+  .friends-container h1 {
+    font-size: 0.75rem;
+    
+  }
+  /* .friends-container{
+    width: 90%;
+
+  } */
+
+  .referral-link-input {
+    height: 28px;
+    font-size: 0.5rem;
+  }
+
+  .copy-button {
+    height: 28px;
+    padding: 0 0.25rem;
+  }
+  .icon-row{
+    width:100%;
+    
+  }
+
+  .icon-item {
+    width: 100%;
+   
+  }
+
+  .icon-item svg {
+    font-size: 0.75rem; /* Adjusted icon size */
+  }
+
+  .icon-item button {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.2rem;
+
+  }
+
+  .watch-popup h2 {
+    font-size: 0.75rem;
+  }
+
+  .watch-popup p {
+    font-size: 0.4rem;
+  }
+
+  .watch-popup button {
+    font-size: 0.4rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  /* Specific adjustments for the YouTube icon container */
+  .icon-item.youtube {
+    width: 60px; /* Ensure it fits within the container */
+  }
+
+  .icon-item.youtube svg {
+    font-size: 1rem; /* Adjusted icon size */
+  }
+
+  .icon-item.youtube button {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  /* Ensure the icon row does not overflow */
+  .icon-row {
+    flex-wrap: wrap; /* Allow wrapping if necessary */
+    justify-content: center; /* Center the icons */
+  }
+}
