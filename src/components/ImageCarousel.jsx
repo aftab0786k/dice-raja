@@ -6,7 +6,8 @@ const ImageCarousel = () => {
   const carouselRef = useRef(null);
 
   const images = [
-    "./s-ladder.jpg",
+   
+    "./ludooDice.jpg",
     "./ludooDice.jpg",
     "./ludooDice.jpg",
     "./ludooDice.jpg",
