@@ -15,39 +15,38 @@ const Footer = () => {
     <div className="mt-5 flex flex-col justify-end pb-4 z-50" style={{marginTop: "4rem"}}>
       <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-[#0a1128] via-[#1c2541] to-[#0b3c5d] border-t-2 border-cyan-500 bg-opacity-70 shadow-2xl rounded-t-3xl w-full max-full flex justify-around p-2" style={{padding: screen.width <= 768 ? "7px" : "10px"}}>
         <NavItem
-          icon={<HomeIcon style={{ fontSize: screen.width <= 768 ? "20px" : "30px" }} className="cursor-pointer" onClick={() => navigate("/")} />} 
+          icon={<HomeIcon style={{ fontSize: screen.width <= 768 ? "20px" : "30px" }} className="cursor-pointer" />} 
           label="Home"
           active={active === "home"}
-          onClick={() => setActive("home")}
+          onClick={() => {setActive("home"); navigate("/");}}
         />
 
         <NavItem
           icon={<LocalGroceryStoreIcon style={{ fontSize: screen.width <= 768 ? "20px" : "29px" }} className="cursor-pointer" />}
           label="Supermarket"
           active={active === "Supermarket"}
-          onClick={() => setActive("Supermarket")}
+          onClick={() => {setActive("Supermarket"); navigate("/");}}
         />
 
         <NavItem
-          icon={<SportsEsportsIcon style={{ fontSize: screen.width <= 768 ? "20px" : "30px" }} className="cursor-pointer" onClick={() => navigate("/playzone")} />}
+          icon={<SportsEsportsIcon style={{ fontSize: screen.width <= 768 ? "20px" : "30px" }} className="cursor-pointer" />}
           label="Playzone"
           active={active === "playzone"}
-          onClick={() => setActive("playzone")}
+          onClick={() => {setActive("playzone"); navigate("/playzone");}}
         />
 
         <NavItem
           icon={<GroupIcon style={{ fontSize: screen.width <= 768 ? "20px" : "30px" }} className="cursor-pointer" />}
           label="Friends"
           active={active === "Friends"}
-          onClick={() => setActive("Friends")}
+          onClick={() => {setActive("Friends"); navigate("/friend");}}
         />
-        {/* onClick={() => navigate("/friend")} */}
 
         <NavItem
-          icon={<AccountCircleIcon style={{ fontSize: screen.width <= 768 ? "20px" : "27px" }} className="cursor-pointer" onClick={() => navigate("/profile")} />}
+          icon={<AccountCircleIcon style={{ fontSize: screen.width <= 768 ? "20px" : "27px" }} className="cursor-pointer" />}
           label="Profile"
           active={active === "profile"}
-          onClick={() => setActive("profile")}
+          onClick={() => {setActive("profile"); navigate("/profile");}}
         />
       </nav>
     </div>

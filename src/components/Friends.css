@@ -2,3 +2,19 @@
 body {
     background: linear-gradient(to bottom right, #0f3460, #1a1a2e);
   }
+
+  .friends-container{
+    margin-top: 4rem;
+  }
+
+  .referral-item{
+    padding: 1rem;
+  }
+
+  .referral-link-input{
+    padding: 0.6rem;
+  }
+
+  .copy-button{
+    padding: 0.6rem;
+  }
